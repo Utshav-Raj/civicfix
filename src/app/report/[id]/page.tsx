@@ -1,10 +1,15 @@
 import { STATUS_META, CATEGORY_MAP } from "@/lib/categories";
 import { getCommentsForReport, getReport, getStatusUpdatesForReport } from "@/lib/data-layer";
+import { MOCK } from "@/lib/mock-data";
 import { formatRelativeTime } from "@/lib/utils";
 import { ArrowUp, MapPin, MessageSquare } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { StatusPill } from "@/components/ui/status-pill";
+
+export function generateStaticParams() {
+  return MOCK.reports.map((r) => ({ id: r.id }));
+}
 
 export default async function ReportDetailPage({
   params,
